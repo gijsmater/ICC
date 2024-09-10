@@ -160,15 +160,19 @@ namespace ICC.Condition
             }
 
             if (!string.IsNullOrEmpty(DiscountGroup) &&
-                (Discount1 == null && Discount2 == null && Discount3 == null))
+                Discount1 == null && 
+                Discount2 == null && 
+                Discount3 == null)
             {
                 throw new InvalidDataException(
                     "When using a discount group atleast one discount percentage should be given.");
             }
 
-            if (!string.IsNullOrEmpty(ProductCode) 
-                &&
-                (Discount1 == null && Discount2 == null && Discount3 == null && NettoPrice == null))
+            if (!string.IsNullOrEmpty(ProductCode) &&
+                Discount1 == null && 
+                Discount2 == null && 
+                Discount3 == null && 
+                NettoPrice == null)
             {
                 throw new InvalidDataException(
                     "When using a product code atleast one discount percentage or the netto price should be given.");
