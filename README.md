@@ -6,7 +6,7 @@ For more information, see: https://www.2ba.nl/wp-content/uploads/2015/01/ICC_Ber
 
 
 With this project you can do the following:
-1. Writing a C# objects to a ICC message (.txt file) with data validation.
+1. Writing C# objects to an ICC message (.txt file) with data validation.
 2. Reading a ICC message and transforming it to C# objects.
 
 ## .NET Standard
