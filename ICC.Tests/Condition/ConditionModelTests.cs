@@ -303,5 +303,48 @@ namespace ICC.Tests.Condition
             Assert.Equal("When using a product code atleast one discount percentage or the netto price should be given.", exception.Message); ;
         }
 
+
+        [Fact]
+        public void NullableIntsFormatted_ReturnPadLeftString_ShouldPass()
+        {
+            //Arrange
+            var condition1 = new ConditionModel(
+                    discountGroup: string.Empty,
+                    productCode: "code",
+                    description: string.Empty,
+                    discount1: null,
+                    discount2: null,
+                    discount3: null,
+                    nettoPrice: 0,
+                    startDate: new DateTime(1993, 4, 9),
+                    endDate: new DateTime(2024, 4, 9)
+                    );
+
+            var condition2 = new ConditionModel(
+                    discountGroup: "group",
+                    productCode: string.Empty,
+                    description: string.Empty,
+                    discount1: 0,
+                    discount2: null,
+                    discount3: null,
+                    nettoPrice: null,
+                    startDate: new DateTime(1993, 4, 9),
+                    endDate: new DateTime(2024, 4, 9)
+                    );
+
+            //Act
+            //Assert
+            Assert.Equal("00000", condition1.Discount1Formatted);
+            Assert.Equal("00000", condition1.Discount2Formatted);
+            Assert.Equal("00000", condition1.Discount3Formatted);
+            Assert.Equal("000000000", condition1.NettoPriceFormatted);
+
+            Assert.Equal("00000", condition2.Discount1Formatted);
+            Assert.Equal("00000", condition2.Discount2Formatted);
+            Assert.Equal("00000", condition2.Discount3Formatted);
+            Assert.Equal("000000000", condition2.NettoPriceFormatted);
+        }
+
+
     }
 }

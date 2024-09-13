@@ -127,10 +127,10 @@ namespace ICC.Condition
         public string DiscountGroupFormatted => DiscountGroup.PadRight(20, Constants.EMPTY_CHAR);
         public string ProductCodeFormatted => ProductCode.PadRight(20, Constants.EMPTY_CHAR);
         public string DescriptionFormatted => Description.PadRight(50, Constants.EMPTY_CHAR);
-        public string Discount1Formatted => Discount1?.ToString().PadLeft(5, '0');
-        public string Discount2Formatted => Discount2?.ToString().PadLeft(5, '0');
-        public string Discount3Formatted => Discount3?.ToString().PadLeft(5, '0');
-        public string NettoPriceFormatted => NettoPrice?.ToString().PadLeft(9, '0');
+        public string Discount1Formatted => (Discount1 ?? 0).ToString().PadLeft(5, '0');
+        public string Discount2Formatted => (Discount2 ?? 0).ToString().PadLeft(5, '0');
+        public string Discount3Formatted => (Discount3 ?? 0).ToString().PadLeft(5, '0');
+        public string NettoPriceFormatted => (NettoPrice ?? 0).ToString().PadLeft(9, '0');
         public string StartDateFormatted => StartDate.ToString(Constants.DATETIME_FORMAT, CultureInfo.InvariantCulture);
         public string EndDateFormatted => 
             EndDate.HasValue ? 
