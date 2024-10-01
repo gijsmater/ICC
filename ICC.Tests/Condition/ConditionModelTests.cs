@@ -305,7 +305,7 @@ namespace ICC.Tests.Condition
 
 
         [Fact]
-        public void NullableIntsFormatted_ReturnPadLeftString_ShouldPass()
+        public void NullableIntsFormatted_ReturnEmptySpaceString_ShouldPass()
         {
             //Arrange
             var condition1 = new ConditionModel(
@@ -334,15 +334,15 @@ namespace ICC.Tests.Condition
 
             //Act
             //Assert
-            Assert.Equal("00000", condition1.Discount1Formatted);
-            Assert.Equal("00000", condition1.Discount2Formatted);
-            Assert.Equal("00000", condition1.Discount3Formatted);
+            Assert.Equal("     ", condition1.Discount1Formatted);
+            Assert.Equal("     ", condition1.Discount2Formatted);
+            Assert.Equal("     ", condition1.Discount3Formatted);
             Assert.Equal("000000000", condition1.NettoPriceFormatted);
 
             Assert.Equal("00000", condition2.Discount1Formatted);
-            Assert.Equal("00000", condition2.Discount2Formatted);
-            Assert.Equal("00000", condition2.Discount3Formatted);
-            Assert.Equal("000000000", condition2.NettoPriceFormatted);
+            Assert.Equal("     ", condition2.Discount2Formatted);
+            Assert.Equal("     ", condition2.Discount3Formatted);
+            Assert.Equal("         ", condition2.NettoPriceFormatted);
         }
 
 

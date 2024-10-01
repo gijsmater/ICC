@@ -127,14 +127,67 @@ namespace ICC.Condition
         public string DiscountGroupFormatted => DiscountGroup.PadRight(20, Constants.EMPTY_CHAR);
         public string ProductCodeFormatted => ProductCode.PadRight(20, Constants.EMPTY_CHAR);
         public string DescriptionFormatted => Description.PadRight(50, Constants.EMPTY_CHAR);
-        public string Discount1Formatted => (Discount1 ?? 0).ToString().PadLeft(5, '0');
-        public string Discount2Formatted => (Discount2 ?? 0).ToString().PadLeft(5, '0');
-        public string Discount3Formatted => (Discount3 ?? 0).ToString().PadLeft(5, '0');
-        public string NettoPriceFormatted => (NettoPrice ?? 0).ToString().PadLeft(9, '0');
+        public string Discount1Formatted
+        {
+            get
+            {
+                if (Discount1.HasValue)
+                {
+                    return Discount1.Value.ToString().PadLeft(5, Constants.ZERO_CHAR);
+                }
+                else
+                {
+                    return Constants.GetNotApplicalbeString(5);
+                }
+            }
+        }
+        public string Discount2Formatted 
+        { 
+            get 
+            {
+                if (Discount2.HasValue)
+                {
+                    return Discount2.Value.ToString().PadLeft(5, Constants.ZERO_CHAR);
+                }
+                else
+                {
+                    return Constants.GetNotApplicalbeString(5);
+                }
+            } 
+        }
+        public string Discount3Formatted
+        {
+            get
+            {
+                if (Discount3.HasValue)
+                {
+                    return Discount3.Value.ToString().PadLeft(5, Constants.ZERO_CHAR);
+                }
+                else
+                {
+                    return Constants.GetNotApplicalbeString(5);
+                }
+            }
+        }
+        public string NettoPriceFormatted 
+        { 
+            get 
+            {
+                if (NettoPrice.HasValue)
+                {
+                    return NettoPrice.Value.ToString().PadLeft(9, Constants.ZERO_CHAR);
+                }
+                else
+                {
+                    return Constants.GetNotApplicalbeString(9);
+                }
+            } 
+        }
+
         public string StartDateFormatted => StartDate.ToString(Constants.DATETIME_FORMAT, CultureInfo.InvariantCulture);
-        public string EndDateFormatted => 
-            EndDate.HasValue ? 
-            EndDate.Value.ToString(Constants.DATETIME_FORMAT, CultureInfo.InvariantCulture) : 
+        public string EndDateFormatted =>
+            EndDate.HasValue ?
+            EndDate.Value.ToString(Constants.DATETIME_FORMAT, CultureInfo.InvariantCulture) :
             Constants.GetNotApplicalbeString(8);
 
         public override string ToString()
@@ -160,8 +213,8 @@ namespace ICC.Condition
             }
 
             if (!string.IsNullOrEmpty(DiscountGroup) &&
-                Discount1 == null && 
-                Discount2 == null && 
+                Discount1 == null &&
+                Discount2 == null &&
                 Discount3 == null)
             {
                 throw new InvalidDataException(
@@ -169,9 +222,9 @@ namespace ICC.Condition
             }
 
             if (!string.IsNullOrEmpty(ProductCode) &&
-                Discount1 == null && 
-                Discount2 == null && 
-                Discount3 == null && 
+                Discount1 == null &&
+                Discount2 == null &&
+                Discount3 == null &&
                 NettoPrice == null)
             {
                 throw new InvalidDataException(
