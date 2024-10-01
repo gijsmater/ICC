@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<PackageId>ICC</PackageId>
-		<PackageVersion>1.0.1</PackageVersion>
+		<PackageVersion>1.0.2</PackageVersion>
 		<Authors>Gijs Mater</Authors>
 		<Description>This package is a light weight SDK for handeling ICC messages. ICC messages are used for communicating price agreements from supplier to supplier.</Description>
 		<Title>ICC SDK</Title>
