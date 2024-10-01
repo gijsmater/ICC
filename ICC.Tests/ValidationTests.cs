@@ -17,22 +17,6 @@
             Assert.Equal($"Max length of value is {maxLength}, actual length is {value.Length}", exception.Message);
         }
 
-
-        [Theory]
-        [InlineData("")]
-        [InlineData(null)]
-        public void IsValidGln_ThrowsWhenGlnIsNullOrEmpty_ShouldThrow(string gln)
-        {
-            //Arrange
-            //Act
-            var action = () => gln.IsValidGln();
-
-            //Assert
-            var exception = Assert.Throws<InvalidDataException>(action);
-
-            Assert.Equal("A GLN cant be NULL or empty", exception.Message);
-        }
-
         [Theory]
         [InlineData("1234")]
         [InlineData("12345678912345")]

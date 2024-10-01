@@ -6,7 +6,8 @@ namespace ICC
     {
         public static string IsValidMaxLength(this string value, int maxLength)
         {
-            if (value.Length > maxLength)
+            if (!string.IsNullOrEmpty(value) &&
+                value.Length > maxLength)
             {
                 throw new InvalidDataException(
                     $"Max length of value is {maxLength}, actual length is {value.Length}");
@@ -16,12 +17,8 @@ namespace ICC
 
         public static string IsValidGln(this string gln)
         {
-            if (string.IsNullOrEmpty(gln))
-            {
-                throw new InvalidDataException("A GLN cant be NULL or empty");
-            }
-
-            if (gln.Length != 13)
+            if (!string.IsNullOrEmpty(gln) &&//GLN is not mandatory
+                gln.Length != 13)
             {
                 throw new InvalidDataException($"Expected length of GLN is 13, actual length is {gln.Length}");
             }
