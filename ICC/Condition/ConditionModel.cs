@@ -40,7 +40,7 @@ namespace ICC.Condition
         /// Start:  91
         /// End:    95
         /// </summary>
-        private int? Discount1 { get; set; }
+        private decimal? Discount1 { get; set; }
 
         /// <summary>
         /// % in hundreds without decimals
@@ -49,7 +49,7 @@ namespace ICC.Condition
         /// Start:  96
         /// End:    100
         /// </summary>
-        private int? Discount2 { get; set; }
+        private decimal? Discount2 { get; set; }
 
         /// <summary>
         /// % in hundreds without decimals
@@ -58,7 +58,7 @@ namespace ICC.Condition
         /// Start:  101
         /// End:    105
         /// </summary>
-        private int? Discount3 { get; set; }
+        private decimal? Discount3 { get; set; }
 
         /// <summary>
         /// Price in eurocents.
@@ -103,9 +103,9 @@ namespace ICC.Condition
             string discountGroup,
             string productCode,
             string description,
-            int? discount1,
-            int? discount2,
-            int? discount3,
+            decimal? discount1,
+            decimal? discount2,
+            decimal? discount3,
             int? nettoPrice,
             DateTime startDate,
             DateTime? endDate)
@@ -133,7 +133,7 @@ namespace ICC.Condition
             {
                 if (Discount1.HasValue)
                 {
-                    return Discount1.Value.ToString().PadLeft(5, Constants.ZERO_CHAR);
+                    return Discount1.Value.DecimalToHundreds().ToString().PadLeft(5, Constants.ZERO_CHAR);
                 }
                 else
                 {
@@ -147,7 +147,7 @@ namespace ICC.Condition
             {
                 if (Discount2.HasValue)
                 {
-                    return Discount2.Value.ToString().PadLeft(5, Constants.ZERO_CHAR);
+                    return Discount2.Value.DecimalToHundreds().ToString().PadLeft(5, Constants.ZERO_CHAR);
                 }
                 else
                 {
@@ -161,7 +161,7 @@ namespace ICC.Condition
             {
                 if (Discount3.HasValue)
                 {
-                    return Discount3.Value.ToString().PadLeft(5, Constants.ZERO_CHAR);
+                    return Discount3.Value.DecimalToHundreds().ToString().PadLeft(5, Constants.ZERO_CHAR);
                 }
                 else
                 {

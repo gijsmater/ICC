@@ -45,5 +45,7 @@ namespace ICC.Condition
                 startDate,
                 endDate);
         }
+
+        public static int DecimalToHundreds(this decimal value) => Convert.ToInt32(Math.Round(value* 100, 0, MidpointRounding.AwayFromZero));
     }
 }

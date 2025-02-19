@@ -346,5 +346,45 @@ namespace ICC.Tests.Condition
         }
 
 
+        [Fact]
+        public void DecimalToHundredsConversion_DiscountDecimalConversionToHundreds_ShouldPass()
+        {
+            //Arrange
+            var condition1 = new ConditionModel(
+                    discountGroup: string.Empty,
+                    productCode: "code",
+                    description: string.Empty,
+                    discount1: 0.01m,
+                    discount2: 0.10m,
+                    discount3: 1.11m,
+                    nettoPrice: 0,
+                    startDate: new DateTime(1993, 4, 9),
+                    endDate: new DateTime(2024, 4, 9)
+                    );
+
+            var condition2 = new ConditionModel(
+                    discountGroup: string.Empty,
+                    productCode: "code",
+                    description: string.Empty,
+                    discount1: 1.00m,
+                    discount2: 10.11m,
+                    discount3: 100.11m,
+                    nettoPrice: 0,
+                    startDate: new DateTime(1993, 4, 9),
+                    endDate: new DateTime(2024, 4, 9)
+                    );
+
+            //Act
+            //Assert
+
+            Assert.Equal("00001", condition1.Discount1Formatted);
+            Assert.Equal("00010", condition1.Discount2Formatted);
+            Assert.Equal("00111", condition1.Discount3Formatted);
+
+            Assert.Equal("00100", condition2.Discount1Formatted);
+            Assert.Equal("01011", condition2.Discount2Formatted);
+            Assert.Equal("10011", condition2.Discount3Formatted);
+        }
+
     }
 }
